@@ -62,22 +62,6 @@ class CreateWalletHandler: JSONRPCHandler {
     }
 }
 
-class ImportWalletHandler: JSONRPCHandler {
-    var method: String { "IMPORT_WALLET" }
-
-    func makeRunnable(from parameters: [String : Any]) throws -> AnyJSONRPCRunnable {
-        let curve: EllipticCurve = try parameters.value(for: "curve")
-        let mnemonicString: String = try parameters.value(for: "mnemonic")
-        let passphrase: String = try parameters.value(for: "passphrase") ?? ""
-
-        let mnemonic = try Mnemonic(with: mnemonicString)
-        let factory = AnyMasterKeyFactory(mnemonic: mnemonic, passphrase: passphrase)
-        let privateKey = try factory.makeMasterKey(for: curve)
-        let command = CreateWalletTask(curve: curve, privateKey: privateKey)
-        return command.eraseToAnyRunnable()
-    }
-}
-
 class PurgeWalletHandler: JSONRPCHandler {
     var method: String { "PURGE_WALLET" }
     

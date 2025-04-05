@@ -24,13 +24,11 @@ let package = Package(
         .target(
             name: "TangemSdk",
             dependencies: [
-                "TangemSdk_secp256k1",
-                "Bls_Signature",
+                "TangemSdk_secp256k1"
             ],
             path: "TangemSdk/TangemSdk",
             exclude: [
                 "Crypto/secp256k1",
-                "Frameworks",
                 "module.modulemap",
                 "TangemSdk.h",
             ],
@@ -45,10 +43,6 @@ let package = Package(
         .target(
             name: "TangemSdk_secp256k1",
             path: "TangemSdk/TangemSdk/Crypto/secp256k1"
-        ),
-        .binaryTarget(
-            name: "Bls_Signature",
-            path: "TangemSdk/TangemSdk/Frameworks/Bls_Signature.xcframework"
         ),
         .testTarget(
             name: "TangemSdkTests",
