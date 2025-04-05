@@ -16,7 +16,6 @@ public final class JSONRPCConverter {
         converter.register(SignHashHandler())
         converter.register(SignHashesHandler())
         converter.register(CreateWalletHandler())
-        converter.register(ImportWalletHandler())
         converter.register(PurgeWalletHandler())
         converter.register(SetAccessCodeHandler())
         converter.register(SetPasscodeHandler())
